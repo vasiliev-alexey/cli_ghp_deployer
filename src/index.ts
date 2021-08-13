@@ -19,6 +19,7 @@ program
 
 if (program.opts().directory === null) {
   console.log("directory = null");
+  console.log("directory = null");
 }
 
 // const cmd = new Command("ss").arguments("<path>").action((path) => {
