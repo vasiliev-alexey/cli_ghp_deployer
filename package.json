@@ -53,6 +53,11 @@
     "tslib": "^1.14.1",
     "typescript": "^4.3.5"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix",
     "*.{js,ts,md,json,yml,html}": "prettier --write"
