@@ -8,13 +8,16 @@ import { loggerFactory } from "./logger";
 const log: Logger = loggerFactory("Main");
 
 const cmd = new Command("ghp-deploy")
-  .option("-b, --buildCommand <command>", "set command to build project")
+  .option("-o, --owner <command>", "set owner to deploy project")
+  .option("-a, --buildCommand <command>", "set command to build project")
   .option("-r, --repository <command>", "set repository to publish")
   .option("-d, --directory <command>", "set directory to publish")
+  .option("-b --branch <command>", "set branch to publish")
   .option("-t, --token <command>", "set GitHub token to publish")
 
   .action(async (options: Record<string, string>) => {
     log.debug("check validate and prompt params");
+
     const deployOpts = await provideArguments(options);
 
     if (deployOpts instanceof Error) {

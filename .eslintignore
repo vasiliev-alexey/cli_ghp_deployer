@@ -1,0 +1,5 @@
+coverage/*
+!.eslintrc.js
+/dist/*
+webpack.config.ts
+

@@ -65,28 +65,10 @@ export async function provideArguments(
 
   const deployOptions: Partial<DeployOptions> = {};
 
-  if (!cmdOptions.repository) {
-    deployOptions.repository = await promptOption("repository");
-  } else {
-    deployOptions.repository = cmdOptions.repository.toString();
-  }
-
   if (!cmdOptions.owner) {
     deployOptions.owner = await promptOption("owner", userName());
   } else {
     deployOptions.owner = cmdOptions.owner.toString();
-  }
-
-  if (!cmdOptions.directory) {
-    deployOptions.directory = await promptOption("directory", "dist");
-  } else {
-    deployOptions.directory = cmdOptions.directory.toString();
-  }
-
-  if (!cmdOptions.branch) {
-    deployOptions.branch = await promptOption("branch", "gh-pages");
-  } else {
-    deployOptions.branch = cmdOptions.branch.toString();
   }
 
   if (!cmdOptions.token) {
@@ -100,6 +82,24 @@ export async function provideArguments(
     }
   } else {
     deployOptions.token = cmdOptions.branch.toString();
+  }
+
+  if (!cmdOptions.repository) {
+    deployOptions.repository = await promptOption("repository");
+  } else {
+    deployOptions.repository = cmdOptions.repository.toString();
+  }
+
+  if (!cmdOptions.branch) {
+    deployOptions.branch = await promptOption("branch", "gh-pages");
+  } else {
+    deployOptions.branch = cmdOptions.branch.toString();
+  }
+
+  if (!cmdOptions.directory) {
+    deployOptions.directory = await promptOption("directory", "dist");
+  } else {
+    deployOptions.directory = cmdOptions.directory.toString();
   }
 
   const checkResult = validatePublishOption(deployOptions);

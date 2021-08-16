@@ -1,6 +1,6 @@
 {
   "name": "cli_ghp_deployer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Написать консольное приложение для публикации страниц на github",
   "main": "dist/src/index.js",
   "bin": "dist/src/index.js",
