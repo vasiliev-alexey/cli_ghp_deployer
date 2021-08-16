@@ -5,12 +5,14 @@ export function buildProject(buildCommand: string): boolean | never {
   if (
     exec(`npm run ${buildCommand}`, (err, stdout, stderr): void | never => {
       if (err) {
-        console.error(stderr, { color: "red" });
+        console.error("Build Error:", stderr);
         process.exit(-1);
       }
-      console.info("********** Build started *********");
-      console.info(stdout);
-      console.info("********** Build finished **********");
+      console.info(
+        "********** Build started *********",
+        stdout,
+        "********** Build finished **********"
+      );
     })
   )
     return true;

@@ -9,3 +9,5 @@ doc/Заметки.md
 /dist
 
 .env
+
+*.tgz
