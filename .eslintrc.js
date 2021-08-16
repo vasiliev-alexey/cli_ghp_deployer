@@ -12,9 +12,11 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    "no-console": "off",
     "max-len": [
       "error",
       {
+        code: 120,
         ignoreComments: true,
       },
     ],
