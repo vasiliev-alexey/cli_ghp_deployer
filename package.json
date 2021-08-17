@@ -14,7 +14,8 @@
     "lint-staged": "lint-staged",
     "lint:fix": "eslint . --fix && prettier --write .",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "deploy": "ts-node  src/index.ts  ghp-deploy -d deploy_dir -r test_repo_for_publish "
   },
   "repository": {
     "type": "git",

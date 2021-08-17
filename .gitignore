@@ -11,3 +11,5 @@ doc/Заметки.md
 .env
 
 *.tgz
+
+/deploy_dir

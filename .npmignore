@@ -21,3 +21,5 @@ prettier.config.js
 .eslintcache
 .husky/
 .prettierrc.json
+
+/deploy_dir
