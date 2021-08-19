@@ -1,15 +1,15 @@
 import { exec } from "child_process";
 import fs from "fs";
 import path from "path";
+import axios from "axios";
+import exp from "constants";
 
 describe("main integration test", () => {
   it("my main integration test", async () => {
-    fs.writeFileSync(
-      path.resolve("deploy_dir/ww.w"),
-      Math.random().toFixed(100)
-    );
-
+    const dummyData = Math.random().toFixed(16);
+    fs.writeFileSync(path.resolve("deploy_dir/", dummyData), dummyData);
     let isErr = false;
+
     exec(`npm run deploy`, (err, stdout, stderr): void | never => {
       if (err) {
         console.error(
@@ -26,5 +26,13 @@ describe("main integration test", () => {
       );
     });
     expect(isErr).toBeFalsy();
-  }, 10000);
+
+    await new Promise((r) => setTimeout(r, 20_000));
+
+    const data = await axios.get(
+      `https://raw.githubusercontent.com/vasiliev-alexey/test_repo_for_publish/gh-pages/${dummyData}`
+    );
+    const body = await data;
+    expect(+dummyData).toEqual(+body.data);
+  }, 60000);
 });
