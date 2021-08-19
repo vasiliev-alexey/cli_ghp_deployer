@@ -21,7 +21,11 @@ module.exports = {
       },
     ],
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": [
+      "off",
+      { devDependencies: ["**/*.test.js"] },
+    ],
     "import/no-unresolved": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/1624
-    "import/extensions": ["warn", "never"], // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
+    "import/extensions": ["warn", "never", { json: "off" }], // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
   },
 };

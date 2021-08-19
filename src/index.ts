@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import program from "commander";
 
-// eslint-disable-next-line import/extensions
 import pkg from "../package.json";
 import cmd from "./deploy";
 

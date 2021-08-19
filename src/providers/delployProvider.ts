@@ -20,7 +20,7 @@ function deploy(
     verbose: boolean;
     branch: string;
   }
-) {
+): Promise<boolean> {
   const params = {
     add: true,
     branch,
@@ -30,26 +30,20 @@ function deploy(
 
   logger.trace("params", params);
 
-  return new Promise((resolve, reject) => {
-    publish(directory, params, (err: Error) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(null);
-    });
-  });
+  publish(directory, params, () => Promise.resolve(false));
+  return Promise.resolve(true);
 }
 
 export async function deployDirectory(
   deployOptions: DeployOptions
 ): Promise<boolean> {
   logger.info(deployOptions);
-  await deploy(deployOptions.directory, {
+
+  return deploy(deployOptions.directory, {
     token: deployOptions.token,
     owner: deployOptions.owner,
     repo: deployOptions.repository,
     verbose: true,
     branch: deployOptions.branch,
   });
-  return true;
 }

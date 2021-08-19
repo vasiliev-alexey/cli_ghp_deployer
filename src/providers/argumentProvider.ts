@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import { Logger } from "tslog";
-import * as fs from "fs";
+import fs from "fs";
 import userName from "git-user-name";
 import { DeployOptions } from "../types";
 import { loggerFactory } from "../logger";
@@ -40,13 +40,14 @@ function validatePublishOption(opt: Partial<DeployOptions>): {
   return retValue;
 }
 
-export async function promptOption(
+async function promptOption(
   optName: string,
   defaultValue?: string
 ): Promise<string> {
   const rez = await inquirer.prompt([
     {
       name: optName,
+      type: "input",
       default: defaultValue,
       message: `What is ${optName} for deployment?`,
       validate(inputName) {
@@ -81,7 +82,7 @@ export async function provideArguments(
       deployOptions.token = await promptOption("token");
     }
   } else {
-    deployOptions.token = cmdOptions.branch.toString();
+    deployOptions.token = cmdOptions.token.toString();
   }
 
   if (!cmdOptions.repository) {
